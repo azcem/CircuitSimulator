@@ -26,7 +26,8 @@ std::list<Element> parse(std::istream& text) {
 		if (tokens.size() == 0) continue;
 		auto elementName = tokens[0];
 		Group group = Group::G1;
-		if (tokens.size() == 5) {
+		//Voltage sources are automaticallly in group 2
+		if (tokens.size() == 5 || elementName[0] == 'V') {
 			group = Group::G2;
 		}
 
@@ -49,6 +50,7 @@ std::list<Element> parse(std::istream& text) {
 			element["collector"] = std::stoi(tokens[1]);
 			element["base"] = std::stoi(tokens[2]);
 			element["emitter"] = std::stoi(tokens[3]);
+			elements.push_back(element);
 
 		//MOSFET
 		} else if (elementName[0] == 'M') {
@@ -59,6 +61,7 @@ std::list<Element> parse(std::istream& text) {
 			element["drain"] = std::stoi(tokens[1]);
 			element["gate"] = std::stoi(tokens[2]);
 			element["source"] = std::stoi(tokens[3]);
+			elements.push_back(element);
 		}
 	}
 	return elements;
