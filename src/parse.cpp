@@ -16,10 +16,11 @@ std::vector<std::string> getTokens(std::istream& line) {
 	return result;
 }
 
-std::list<Element> parse(std::istream& text) {
-	std::list<Element> elements;
+int parse(std::istream& text, std::list<Element>& elements) {
 	std::string line;
 	std::vector<char> twoTerminalDevices {'V', 'I', 'R', 'C', 'I', 'D'};
+	int numNodes = 0;
+	int numGroup2 = 0;
 	while (std::getline(text, line)) {
 		std::istringstream lineStream {line};
 		auto tokens = getTokens(lineStream);
@@ -29,6 +30,7 @@ std::list<Element> parse(std::istream& text) {
 		//Voltage sources are automaticallly in group 2
 		if (tokens.size() == 5 || elementName[0] == 'V') {
 			group = Group::G2;
+			numGroup2++;
 		}
 
 		if (std::find(twoTerminalDevices.cbegin(), twoTerminalDevices.cend(), elementName[0]) != twoTerminalDevices.cend()) {
@@ -38,6 +40,7 @@ std::list<Element> parse(std::istream& text) {
 			}
 			element["positiveNode"] = std::stoi(tokens[1]);
 			element["negativeNode"] = std::stoi(tokens[2]);
+			numNodes = std::max({numNodes, element["positiveNode"], element["negativeNode"]});
 			element.setGroup(group);
 			elements.push_back(element);
 
@@ -50,6 +53,7 @@ std::list<Element> parse(std::istream& text) {
 			element["collector"] = std::stoi(tokens[1]);
 			element["base"] = std::stoi(tokens[2]);
 			element["emitter"] = std::stoi(tokens[3]);
+			numNodes = std::max({numNodes, element["collector"], element["base"], element["emitter"]});
 			elements.push_back(element);
 
 		//MOSFET
@@ -61,8 +65,9 @@ std::list<Element> parse(std::istream& text) {
 			element["drain"] = std::stoi(tokens[1]);
 			element["gate"] = std::stoi(tokens[2]);
 			element["source"] = std::stoi(tokens[3]);
+			numNodes = std::max({numNodes, element["drain"], element["gate"], element["source"]});
 			elements.push_back(element);
 		}
 	}
-	return elements;
+	return numNodes + numGroup2;
 }
