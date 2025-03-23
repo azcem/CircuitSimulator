@@ -16,7 +16,7 @@ std::vector<std::string> getTokens(std::istream& line) {
 	return result;
 }
 
-int parse(std::istream& text, std::list<Element>& elements) {
+std::pair<int,int> parse(std::istream& text, std::list<Element>& elements) {
 	std::string line;
 	std::vector<char> twoTerminalDevices {'V', 'I', 'R', 'C', 'I', 'D'};
 	int numNodes = 0;
@@ -69,5 +69,5 @@ int parse(std::istream& text, std::list<Element>& elements) {
 			elements.push_back(element);
 		}
 	}
-	return numNodes + numGroup2;
+	return {numNodes, numGroup2};
 }
