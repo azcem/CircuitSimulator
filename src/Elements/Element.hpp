@@ -2,6 +2,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <format>
 
 /* Enum for optional group clause */
 enum class Group {
@@ -25,6 +26,8 @@ public:
 	auto& operator[](const std::string& key) { return m_nodes[key]; }
 	Group getGroup() const { return m_group; }
 	void setGroup(Group group) { m_group = group; }
+	friend std::ostream &operator<<(std::ostream &str, const Element& element);
+
 
 private:
 	std::string m_name;
@@ -32,3 +35,4 @@ private:
 	std::unordered_map<std::string, int> m_nodes;
 	Group m_group = Group::G1;
 };
+
