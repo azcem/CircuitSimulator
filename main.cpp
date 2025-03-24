@@ -1,28 +1,40 @@
-#include "src/parse.hpp"
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <numeric>
+#include <format>
+#include <ranges>
 #include "src/stamp.hpp"
+#include "src/solve.hpp"
+#include "src/parse.hpp"
 
-int main() {
-	std::filesystem::path filepath {"./test.circuit"};
+std::string printValues(std::list<Element>& elements, VectorXd x, int numNodes, int numGroup2) {
+	std::string result;
+	int i = 0;
+	for (; i < numNodes; i++) {
+		result += std::format("V{} = {}", i+1, x(i));
+		result += '\n';
+	}
+	auto view = elements | std::views::filter([] (auto element) {return element.getGroup() == Group::G2;});
+	for (auto element : view) {
+		result += std::format("I({}) = {}", element.getName(), x(i++));
+		result += '\n';
+	}
+	return result;
+}
+
+int main(int argc, char** argv) {
+	if (argc != 2) {
+		std::cout << "please enter circuit description file\n";
+		return 1;
+	}
+	std::filesystem::path filepath {argv[1]};
 	std::ifstream ifile { filepath };
 	std::list<Element> elements;
 	auto [numNodes, numGroup2] = parse(ifile, elements);
-	for (auto& element : elements) {
-		std::cout << element;
-	}
 
-	/*MatrixXd A(numNodes+numGroup2+1, numNodes+numGroup2+1);*/
-	/*VectorXd rhs(numNodes+numGroup2+1);*/
 	auto [A, rhs] = stamp(elements, numNodes, numGroup2);
-	std::vector<int> indices (numNodes+numGroup2);
-	std::iota(indices.begin(), indices.end(), 1);
-	auto A_modified = A(indices, indices);
 
-	std::cout << A;
-	std::cout << rhs << std::endl;
-	std::cout <<std::endl;
-	std::cout << A.determinant();
+	VectorXd x = solveLinearCircuit(A, rhs);
+	std::cout << printValues(elements, x, numNodes, numGroup2);
 }
