@@ -12,7 +12,7 @@ std::string printValues(std::list<Element>& elements, VectorXd x, int numNodes, 
 	std::string result;
 	int i = 0;
 	for (; i < numNodes; i++) {
-		result += std::format("V{} = {}", i+1, x(i));
+		result += std::format("V({}) = {}", i+1, x(i));
 		result += '\n';
 	}
 	auto view = elements | std::views::filter([] (auto element) {return element.getGroup() == Group::G2;});
