@@ -1,6 +1,6 @@
 CXX = g++
 
-CXXFLAGS = -std=c++23
+CXXFLAGS = -std=c++20
 
 PROG = CircuitSimulator
 HDRS = src/parse.hpp src/solve.hpp src/stamp.hpp src/Elements/Element.hpp
