@@ -4,7 +4,7 @@
 
 A C++ circuit simulator that leverages modern C++ techniques and linear algebra to analyze electrical circuits.
 
-### 🚀 Features
+## 🚀 Features
 
 Supports multiple circuit element types
 
