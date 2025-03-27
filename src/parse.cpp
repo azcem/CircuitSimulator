@@ -37,6 +37,7 @@ std::pair<int,int> parse(std::istream& text, std::list<Element>& elements) {
 			Element element{elementName};
 			if (tokens.size() >= 4) {
 				element.setValue(std::stod(tokens[3]));
+				element.setOriginalValue(std::stod(tokens[3]));
 			}
 			element["positiveNode"] = std::stoi(tokens[1]);
 			element["negativeNode"] = std::stoi(tokens[2]);
@@ -49,6 +50,7 @@ std::pair<int,int> parse(std::istream& text, std::list<Element>& elements) {
 			Element element{elementName};
 			if (tokens.size() == 5) {
 				element.setValue(std::stod(tokens[4]));
+				element.setOriginalValue(std::stod(tokens[3]));
 			}
 			element["collector"] = std::stoi(tokens[1]);
 			element["base"] = std::stoi(tokens[2]);
@@ -61,6 +63,7 @@ std::pair<int,int> parse(std::istream& text, std::list<Element>& elements) {
 			Element element{elementName};
 			if (tokens.size() == 5) {
 				element.setValue(std::stod(tokens[4]));
+				element.setOriginalValue(std::stod(tokens[3]));
 			}
 			element["drain"] = std::stoi(tokens[1]);
 			element["gate"] = std::stoi(tokens[2]);

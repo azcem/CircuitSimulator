@@ -22,6 +22,7 @@ public:
 	void setName(std::string& name) { m_name = name; }
 	std::string getName() const { return m_name; }
 	void setValue(double value) { m_value = value; }
+	void setOriginalValue(double value) { m_originalValue = value; }
 	double getValue() const { return m_value; }
 	auto& operator[](const std::string& key) { return m_nodes[key]; }
 	Group getGroup() const { return m_group; }
@@ -34,5 +35,6 @@ private:
 	double m_value;
 	std::unordered_map<std::string, int> m_nodes;
 	Group m_group = Group::G1;
+	double m_originalValue;
 };
 
