@@ -59,7 +59,5 @@ std::pair<MatrixXd, VectorXd> stamp(std::list<Element>& elements, int numNodes, 
 			currentsIndex++;
 		}
 	} 
-	std::vector<int> indices(numNodes + numGroup2);
-	std::iota(indices.begin(), indices.end(), 1);
 	return std::make_pair(A(Eigen::lastN(size-1), Eigen::lastN(size-1)), rhs(Eigen::lastN(size-1)));
 }
