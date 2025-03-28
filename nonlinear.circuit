@@ -1,0 +1,19 @@
+% V + - val
+% I + - val [G2]
+% R + - val [G2]
+% c + - val [G2]
+% L + - val
+% D + 0 [val]
+% QN c b e [val]
+% QP c b e [val]
+% MN d g s [val]
+% MP d g s [val]
+
+V1 1 0 0
+V2 3 0 3
+R1 1 2 450
+R2 3 4 640
+R3 4 5 450
+R4 3 6 100
+QN 4 2 0
+MN 7 2 0
