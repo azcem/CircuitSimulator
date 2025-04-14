@@ -7,4 +7,4 @@
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
 
-VectorXd getInitialGuess(std::list<Element>& elements, int size, int inputNodes);
+VectorXd getInitialGuess(std::list<Element> &elements, std::vector<Element>& nonlinearElements, int numNodes, int numGroup2);

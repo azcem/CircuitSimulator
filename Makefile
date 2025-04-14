@@ -1,6 +1,6 @@
 CXX = g++
 
-CXXFLAGS = -std=c++20 -g
+CXXFLAGS = -std=c++20 -g -lnlopt -lm
 
 PROG = CircuitSimulator
 HDRS = src/constants.hpp src/guess.hpp src/parse.hpp src/solve.hpp src/stamp.hpp src/Elements/Element.hpp
