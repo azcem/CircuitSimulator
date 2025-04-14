@@ -24,6 +24,9 @@
 #define TAU_RELATIVE 0.001
 #define TAU_ABSOLUTE 0.001
 
+#define ETA 1.3
+#define K_DAMP 16
+
 extern std::set<char> INDEPENDENT_SOURCES ;
 extern std::set<char> LINEAR_ELEMENTS ;
 extern std::set<char> NONLINEAR_ELEMENTS ;
