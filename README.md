@@ -39,6 +39,9 @@ git clone https://github.com/azcem/CircuitSimulator.git
 cd CircuitSimulator
 
 # Build with CMake
+mkdir build
+cd build
+cmake ..
 make
 ```
 
@@ -64,9 +67,9 @@ R8 4 0 10	G2 % this is a group 2 element
 
 ```
 
-run the executable with
+run the executable with sample test.circuit
 ```code
-./CircuitSimulator test.circuit
+./CircuitSimulator ../test.circuit
 ```
 
 ## 📊 Supported Elements
