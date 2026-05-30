@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Elements/Element.hpp"
+#include <Eigen/Dense>
+#include <Eigen/src/Core/Matrix.h>
 #include <list>
-#include <eigen3/Eigen/Dense>
-#include <eigen3/Eigen/src/Core/Matrix.h>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-std::pair<MatrixXd, VectorXd> stamp(std::list<Element>& elements, int numNodes, int numGroup2);
+std::pair<MatrixXd, VectorXd> stamp(std::list<Element> &elements, int numNodes,
+                                    int numGroup2);

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <eigen3/Eigen/Dense>
-#include <eigen3/Eigen/src/Core/Matrix.h>
+#include <Eigen/Dense>
+#include <Eigen/src/Core/Matrix.h>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-VectorXd solveLinearCircuit(MatrixXd& A, VectorXd& b);
+VectorXd solveLinearCircuit(MatrixXd &A, VectorXd &b);
