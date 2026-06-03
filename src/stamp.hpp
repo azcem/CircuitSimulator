@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Elements/Element.hpp"
-#include <Eigen/Dense>
-#include <Eigen/src/Core/Matrix.h>
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/src/Core/Matrix.h>
 #include <list>
 
 using Eigen::MatrixXd;

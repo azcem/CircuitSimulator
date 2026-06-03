@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Eigen/Dense>
-#include <Eigen/src/Core/Matrix.h>
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/src/Core/Matrix.h>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;

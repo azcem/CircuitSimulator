@@ -1,6 +1,6 @@
 #include "stamp.hpp"
 #include "Elements/Element.hpp"
-#include <Eigen/src/Core/ArithmeticSequence.h>
+#include <eigen3/Eigen/src/Core/ArithmeticSequence.h>
 #include <numeric>
 #include <utility>
 
